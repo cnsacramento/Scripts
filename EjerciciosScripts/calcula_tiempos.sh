@@ -14,10 +14,11 @@
 
 #Argumentos de Entrada
 segundos=$1
+# 1dia = 86400segundos, 1hora = 3600segundos, 1min = 60segundos
 dias=$(($segundos/86400))
-modDias=$(($segundos % 86400))
+modDias=$(($segundos%86400))
 horas=$(($modDias/3600))
-modHoras=$(($horas%3600))
+modHoras=$(($modDias%3600))
 minutos=$(($modHoras/60))
-
-echo "$segundos segundos son: $dias dias $horas horas $minutos minutos"
+modMinutos=$(($modHoras%60)) # El resto de los minutos son los segundos restantes
+echo "$segundos segundos son: $dias dias $horas horas $minutos minutos $modMinutos segundos"
