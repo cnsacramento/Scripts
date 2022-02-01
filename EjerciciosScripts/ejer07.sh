@@ -20,8 +20,7 @@ numero2=$2
 
 if [ $# -eq 0  ]
 then
-	echo "Error!!!!"
-	echo "Te falta los parámetro. Dame el parámetro 1: "
+	echo"Dame el parámetro 1: "
 	read numero1
 	read -p "Dame el parámetro 2: " numero2
 elif [ $# -eq 1 ]
@@ -37,5 +36,5 @@ elif [[ numero1 -eq numero2 ]]
 then
 	echo "$numero1 es igual que $numero2"
 else
-	echo "$numero1 es menor que $numero2"
+	echo "$numero2 es mayor que $numero1"
 fi
