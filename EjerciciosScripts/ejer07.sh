@@ -18,10 +18,16 @@
 numero1=$1
 numero2=$2
 
-if [ $# -le 0 ]
+if [ $# -eq 0  ]
 then
-	echo "Te falta un parámetro. Dame el otro parámetro: "
-	read numero2
+	echo "Error!!!!"
+	echo "Te falta los parámetro. Dame el parámetro 1: "
+	read numero1
+	read -p "Dame el parámetro 2: " numero2
+elif [ $# -eq 1 ]
+then
+	echo "Error!! Te falta un parámetro"
+	read -p "Dame el parámetro que te falta" numero2
 fi
 
 if [[ numero1 -gt numero2 ]]
