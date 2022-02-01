@@ -17,4 +17,10 @@
 numero1=$1
 numero2=$2
 
+# Comprobación de argumentos
+
+if [ $# -le 0 ];
+then
+	echo "Hay que introducir 2 parámetros"
+fi
 echo "El resultado de $numero1 - $numero2 es: " $(($numero1 - $numero2))
