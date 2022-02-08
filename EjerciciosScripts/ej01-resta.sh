@@ -16,11 +16,12 @@
 
 numero1=$1
 numero2=$2
-
+ERROR_SINTAXIS=1
 # Comprobación de argumentos
 
-if [ $# -le 0 ];
+if [ "$#" -le 0 ];
 then
-	echo "Hay que introducir 2 parámetros"
+	echo "ERROR!!! (Hay que introducir 2 parámetros)"
+	exit $ERROR_SINTAXIS
 fi
 echo "El resultado de $numero1 - $numero2 es: " $(($numero1 - $numero2))

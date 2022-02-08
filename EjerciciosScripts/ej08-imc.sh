@@ -35,4 +35,16 @@ ALTURA=$(( $ALTURA / 100 ))
 IMC=$(( (10000 * $PESO)/$ALTURA^2 ))
 echo "El IMC es: " $IMC
 
-if [[ $IMC -lt 18.]]
+if [[ $IMC -lt 18.5]]
+then
+	echo "Se encuentra en bajo peso"
+elif [[ $IMC -lt 18.5 && $IMC -lt 25 ]]
+then
+	echo "Se encuentra en normal"
+elif [[ $IMC -ge 25 && $IMC -lt 30 ]]
+then
+	echo "Se encuentra en sobrepeso"
+elif [[ $IMC -ge 30 ]]
+then
+	echo "Se encuentra en obesidad"
+fi

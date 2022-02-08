@@ -13,12 +13,17 @@
 
 #######################################################
 
-nombre=$1
-apellido=$2
-usuario=$3
-aleatorio=$RANDOM
-
-echo "Bienvenido $nombre"
-echo "Tus datos son: $nombre, $apellido"
-echo "Vamos a crear tu usuario $usuario"
-echo "Tú nueva ID es $aleatorio"
+NOMBRE=$1
+APELLIDO=$2
+USUARIO=$3
+ALEATORIO=$RANDOM
+ERROR_ARG=1
+if [ $# -lt 3 ]
+then
+	echo "Error!!! "
+	exit $ERROR_ARG
+fi
+echo "Bienvenido $NOMBRE"
+echo "Tus datos son: $NOMBRE, $APELLIDO"
+echo "Vamos a crear tu usuario $USUARIO"
+echo "Tú nueva ID es $ALEATORIO"
