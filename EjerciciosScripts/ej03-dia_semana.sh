@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# NOMBRE: dia_semana.sh
+# NOMBRE: ej03-dia_semana.sh
 # OBJETIVO: Recoge una fecha y devuelve el día de la semana que fue en aquella época
 # AUTOR: Christian Novo Sacramento
 # FECHA: 25/01/2022
@@ -14,9 +14,27 @@
 #######################################################
 
 
-dia=$1
-mes=$2
-anio=$3
-fecha=$anio-$mes-$dia
+DIA=$1
+MES=$2
+ANYO=$3
 
-echo "El día de la semana de la fecha indicada ($dia/$mes/$anio) fue: $(date --date=$fecha +%A)"
+if [ $# -le 0 ];
+then
+	echo "No has introducido ningún parámetro. Prueba a introducirlos: "
+	read -p "Día: " DIA
+	read -p "Mes: " MES
+	read -p "Año: " ANYO
+elif [ $# -le 1 ];
+then
+	echo "Falta introducir el MES y el AÑO"
+	read -p "Mes: " MES
+	read -p "Año: " ANYO
+elif [ $# -le 2 ];
+then
+	echo "Falta introducir el año"
+	read -p "Año: " ANYO
+fi
+
+FECHA=$ANYO-$MES-$DIA
+echo "El día de la semana de la fecha indicada ($DIA/$MES/$ANYO) fue: $(date --date=$FECHA +%A)"
+
