@@ -20,7 +20,7 @@ ALEATORIO=$RANDOM
 ERROR_ARG=1
 if [ $# -lt 3 ]
 then
-	echo "Error!!! "
+	echo "Error!!! ¿Dónde se fueron los argumentos? "
 	exit $ERROR_ARG
 fi
 echo "Bienvenido $NOMBRE"
