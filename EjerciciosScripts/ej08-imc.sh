@@ -24,12 +24,12 @@ echo "============================="
 
 if [[ $# -eq 1 ]]
 then
-	read -p "Introduce tú altura en cm: " ALTURA
+	read -p "Introduce tu peso en kg: " PESO
 # Si los parámetros son iguales a 0 se solicitan los dos parámetros
 elif [[ $# -eq 0 ]]
 then
-	read -p "Introduce tú peso en kg: " PESO
-	read -p "Introduce tú altura en cm: " ALTURA
+	read -p "Introduce tu altura en cm: " ALTURA
+	read -p "Introduce tu peso en kg: " PESO
 fi
 
 # Fórmula de IMC = kg/m^2
