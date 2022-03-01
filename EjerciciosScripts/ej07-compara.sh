@@ -29,7 +29,10 @@ then
 	read -p "Número 2: " NUMERO_2
 fi
 echo -e "\n"
-if [[ NUMERO_1 -gt NUMERO_2 ]];
+if [[ NUMERO_1 -eq NUMERO_2 ]];
+then
+	echo "$NUMERO_1 es igual que $NUMERO_2"
+elif [[ NUMERO_1 -gt NUMERO_2 ]];
 then
 	echo "$NUMERO_1 es mayor que $NUMERO_2"
 else
