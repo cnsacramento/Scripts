@@ -19,7 +19,9 @@ PESO=$2 # Se necesita en kg
 
 echo "Programa para calcular el IMC"
 echo "============================="
+
 # Si se recibe un sólo parámetro se solicita el segundo
+
 if [[ $# -eq 1 ]]
 then
 	read -p "Introduce tú altura en cm: " ALTURA
@@ -30,21 +32,31 @@ then
 	read -p "Introduce tú altura en cm: " ALTURA
 fi
 
-ALTURA=$(( $ALTURA / 100 ))
 # Fórmula de IMC = kg/m^2
-IMC=$(( (10000 * $PESO)/$ALTURA^2 ))
+
+ALTURA_EN_METROS=$( echo "scale=2; $ALTURA / 100" | bc )
+echo $ALTURA_EN_METROS
+
+#Se realiza la operación con decimales
+IMC=$( echo "scale=1; ( $PESO / ($ALTURA_EN_METROS^2) )" | bc )
 echo "El IMC es: " $IMC
 
-if [[ $IMC -lt 18.5]]
+# Se le quitan los decimales para poder comparar
+IMC=$( echo "scale=0; ( $IMC * 10 ) / 1" | bc )
+
+
+# Todos los indices son múltiplicados por 10 para comparar con el IMC
+
+if [[ $IMC -lt 185 ]]
 then
-	echo "Se encuentra en bajo peso"
-elif [[ $IMC -lt 18.5 && $IMC -lt 25 ]]
+	echo "Se encuentra en bajo de peso. Es recomendable que acuda su médico"
+elif [[ $IMC -ge 185 && $IMC -lt 250 ]]
 then
-	echo "Se encuentra en normal"
-elif [[ $IMC -ge 25 && $IMC -lt 30 ]]
+	echo "Todo se encuentra normal, sigue así"
+elif [[ $IMC -ge 250 && $IMC -lt 300 ]]
 then
-	echo "Se encuentra en sobrepeso"
-elif [[ $IMC -ge 30 ]]
-then
-	echo "Se encuentra en obesidad"
+	echo "Se encuentra en sobrepeso. Habrá que hacer más ejercicio y comer mejor"
+else
+	echo "Se encuentra en Obesidad. Acuda a su médico"
+	echo "¿Sabía que la obesidad es la segunda causa de mortalidad prevenible?"
 fi
