@@ -14,53 +14,60 @@
 #######################################################
 
 # Argumentos de entrada
-precioArticulo=$1
+PRECIO_ARTICULO=$1
+ERROR_ARGS=1
+# Comprobación de argumento
+if [ $# -lt 1 ];
+then
+	echo "Parece ser que no compraste nada"
+	exit $ERROR_ARGS
+fi
 
 echo "Indique el dinero pagado: "
-read dineroPagado
+read DINERO_PAGADO
 
-cambio=$(($dineroPagado-$precioArticulo))
+CAMBIO=$(($DINERO_PAGADO-$PRECIO_ARTICULO))
 
-echo "El cambio son $cambio euros, debe entregar: "
-billetes50=0
-if [ $cambio -ge 50 ]
+echo "El cambio son $CAMBIO euros, debe entregar: "
+BILLETES_50=0
+if [ $CAMBIO -ge 50 ]
 then
-	billetes50=$(($cambio/50))
-	cambio=$(($cambio%50))
+	BILLETES50=$(($CAMBIO/50))
+	CAMBIO=$(($CAMBIO%50))
 fi
-billetes20=0
-if [ $cambio -ge 20 ]
+BILLETES_20=0
+if [ $CAMBIO -ge 20 ]
 then
-        billetes20=$(($cambio/20))
-        cambio=$(($cambio%20))
+        BILLETES_20=$(($CAMBIO/20))
+        CAMBIO=$(($CAMBIO%20))
 fi
-billetes10=0
-if [ $cambio -ge 10 ]
+BILLETES_10=0
+if [ $CAMBIO -ge 10 ]
 then
-        billetes10=$(($cambio/10))
-        cambio=$(($cambio%10))
+        BILLETES_10=$(($CAMBIO/10))
+        CAMBIO=$(($CAMBIO%10))
 fi
-billetes5=0
-if [ $cambio -ge 5 ]
+BILLETES_5=0
+if [ $CAMBIO -ge 5 ]
 then
-        billetes5=$(($cambio/5))
-        cambio=$(($cambio%5))
+        BILLETES_5=$(($CAMBIO/5))
+        CAMBIO=$(($CAMBIO%5))
 fi
-monedas2=0
-if [ $cambio -ge 2 ]
+MONEDAS_2=0
+if [ $CAMBIO -ge 2 ]
 then
-	monedas2=$(($cambio/2))
-	cambio=$(($cambio%2))
+	MONEDAS_2=$(($CAMBIO/2))
+	CAMBIO=$(($CAMBIO%2))
 fi
-monedas1=0
-if [ $cambio -ge 1 ]
+MONEDAS_1=0
+if [ $CAMBIO -ge 1 ]
 then
-	cambio=1
+	MONEDAS_1=1
 fi
 
-echo "$billetes50 billetes de 50 euros"
-echo "$billetes20 billetes de 20 euros"
-echo "$billetes10 billetes de 10 euros"
-echo "$billetes5 billetes de 5 euros"
-echo "$monedas2 monedas de 2 euros"
-echo "$monedas1 monedas de 1 euro"
+echo "$BILLETES_50 billetes de 50 euros"
+echo "$BILLETES_20 billetes de 20 euros"
+echo "$BILLETES_10 billetes de 10 euros"
+echo "$BILLETES_5 billetes de 5 euros"
+echo "$MONEDAS_2 monedas de 2 euros"
+echo "$MONEDAS_1 monedas de 1 euro"
