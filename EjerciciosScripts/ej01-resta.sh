@@ -14,14 +14,20 @@
 #######################################################
 
 
-numero1=$1
-numero2=$2
-ERROR_SINTAXIS=1
+NUMERO1=$1
+NUMERO2=$2
+
 # Comprobación de argumentos
+
 
 if [ "$#" -le 0 ];
 then
 	echo "ERROR!!! (Hay que introducir 2 parámetros)"
-	exit $ERROR_SINTAXIS
+	read -p "Número 1: " NUMERO1
+	read -p "Número 2: " NUMERO2
+elif [ $# -le 1 ];
+then
+	echo "ERROR!!! (Falta el segundo parámetro)"
+	read -p "Número 2: " NUMERO2
 fi
-echo "El resultado de $numero1 - $numero2 es: " $(($numero1 - $numero2))
+echo "El resultado de $NUMERO1 - $NUMERO2 es: " $(($NUMERO1 - $NUMERO2))
