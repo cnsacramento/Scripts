@@ -17,6 +17,13 @@ dia=$1
 hora=$2
 minuto=$3
 segundo=$4
+ERROR_ARGS=1
+
+if [ $# -lt 4 ];
+then
+	echo -e "\nParece ser que te faltó algo..."
+	exit $ERROR_ARGS
+fi
 
 # 1día = 86400segundos, 1hora = 3600segundos, 1minuto = 60 segundos
 conversionSegundos=$(($dia*86400 + $hora*3600 + $minuto*60 + $segundo))
