@@ -16,15 +16,11 @@
 
 NOMBRE_PAQUETE=$1
 ERROR_ARGS=1
-AZUL="\e[34m"
-VERDE="\e[32m"
-BLANCO="\e[0m"
-
 
 echo ""
 if [[ $# -lt 1  ]]
 then
-	echo "¿Dónde se fue el nombre del paquete?"
+	echo -e "\e[30m¿Dónde se fue el nombre del paquete?\e[0m"
 	exit $ERROR_ARGS
 fi
 
@@ -32,7 +28,7 @@ dpkg -l $NOMBRE_PAQUETE > /dev/null 2>&1
 INSTALADO=$?
 if [[ $INSTALADO -eq 0 ]]
 then
-	echo -e "El paquete está instalado"
+	echo "El paquete está instalado"
 	echo "La versión instalada es:" $(dpkg-query -W $NOMBRE_PAQUETE)
 CONTINUAR=true
 while ( $CONTINUAR )
@@ -47,7 +43,9 @@ do
 	echo "|| 4. Eliminar (totalmente)            ||"
 	echo "|| 5. Salir                            ||"
 	echo "========================================="
-	read -p "Opción: " OPCION
+	echo -e "Opción:\e[32m \c"
+	read OPCION
+	echo -e "\e[0m \c"
 	case $OPCION in
 		1)
 		  echo ""
@@ -56,8 +54,7 @@ do
 		  sudo apt-get install --only-upgrade $NOMBRE_PAQUETE
 		  ;;
 		2)
-		  echo ""
-		  echo -e "$AZULSe comienza la reinstalación $BLANCO"
+		  echo -e "\e[34mSe comienza la reinstalación\e[0m"
 		  sudo apt-get update
     		  sudo apt-get install --reinstall $NOMBRE_PAQUETE
 		  ;;
