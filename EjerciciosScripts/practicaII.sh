@@ -16,20 +16,26 @@
 
 NOMBRE_PAQUETE=$1
 ERROR_ARGS=1
+AZUL="\e[34m"
+VERDE="\e[32m"
+BLANCO="\e[0m"
+
 
 echo ""
 if [[ $# -lt 1  ]]
 then
-	echo "Prueba a escribir el argumento"
+	echo "¿Dónde se fue el nombre del paquete?"
 	exit $ERROR_ARGS
 fi
 
-if [[ $(dpkg -s $NOMBRE_PAQUETE | grep Status) == "Status: install ok installed" ]]
+dpkg -l $NOMBRE_PAQUETE > /dev/null 2>&1
+INSTALADO=$?
+if [[ $INSTALADO -eq 0 ]]
 then
 	echo -e "El paquete está instalado"
 	echo "La versión instalada es:" $(dpkg-query -W $NOMBRE_PAQUETE)
-
-while ( true )
+CONTINUAR=true
+while ( $CONTINUAR )
 do
 	echo ""
 	echo "========================================="
@@ -51,7 +57,7 @@ do
 		  ;;
 		2)
 		  echo ""
-		  echo -e "\e[34mSe comienza la reinstalación\e[0m"
+		  echo -e "$AZULSe comienza la reinstalación $BLANCO"
 		  sudo apt-get update
     		  sudo apt-get install --reinstall $NOMBRE_PAQUETE
 		  ;;
@@ -70,7 +76,7 @@ do
 		  sudo apt-get autoremove
 		  ;;
 		5)
-			break
+			CONTINUAR=false
 		  ;;
 		*)
 			echo "Parece que has escogido una opción no válida. Prueba de nuevo"
@@ -79,5 +85,5 @@ do
 done
 
 else
-	echo "El paquete no está instalado"
+	echo -e "El paquete \e[1;31m$NOMBRE_PAQUETE\e[0m no está instalado"
 fi
