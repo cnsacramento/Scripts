@@ -26,7 +26,7 @@ fi
 
 if [[ $(dpkg -s $NOMBRE_PAQUETE | grep Status) == "Status: install ok installed" ]]
 then
-	echo "El paquete está instalado"
+	echo -e "El paquete está instalado"
 	echo "La versión instalada es:" $(dpkg-query -W $NOMBRE_PAQUETE)
 
 while ( true )
@@ -45,26 +45,26 @@ do
 	case $OPCION in
 		1)
 		  echo ""
-		  echo "Se comienza la actualización"
+		  echo -e "\e[34mSe comienza la actualización\e[0m"
 		  sudo apt-get update
 		  sudo apt-get install --only-upgrade $NOMBRE_PAQUETE
 		  ;;
 		2)
 		  echo ""
-		  echo "Se comienza la reinstalación"
+		  echo -e "\e[34mSe comienza la reinstalación\e[0m"
 		  sudo apt-get update
     		  sudo apt-get install --reinstall $NOMBRE_PAQUETE
 		  ;;
 		3)
 		  echo ""
-		  echo "Se comienza la eliminación sin eliminar configuración"
+		  echo -e "\e[34mSe comienza la eliminación sin eliminar configuración\e[0m"
 		  sudo apt-get remove $NOMBRE_PAQUETE
 		  sudo apt-get update
 		  sudo apt-get autoremove
 		  ;;
 		4)
 		  echo ""
-		  echo "Se comienza la eliminación total"
+		  echo -e "\e[34mSe comienza la eliminación total\e[0m"
 		  sudo apt-get purge $NOMBRE_PAQUETE
 		  sudo apt-get update
 		  sudo apt-get autoremove
@@ -77,6 +77,7 @@ do
 	esac
 
 done
+
 else
 	echo "El paquete no está instalado"
 fi
