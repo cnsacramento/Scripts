@@ -20,7 +20,7 @@ ERROR_ARGS=1
 echo ""
 if [[ $# -lt 1  ]]
 then
-	echo -e "\e[30m¿Dónde se fue el nombre del paquete?\e[0m"
+	echo -e "\e[1;31m¿Dónde se fue el nombre del paquete?\e[0m"
 	exit $ERROR_ARGS
 fi
 
