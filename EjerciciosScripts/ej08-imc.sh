@@ -2,7 +2,7 @@
 
 # NOMBRE: ej08-imc.sh
 # OBJETIVO: Calcula el IMC e indica la clasificación
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 2022-02-01
 
 # ENTRADAS(2): 1.Peso , 2.Altura

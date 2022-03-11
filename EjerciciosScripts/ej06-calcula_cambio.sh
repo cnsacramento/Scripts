@@ -2,7 +2,7 @@
 
 # NOMBRE: calcula_cambio.sh
 # OBJETIVO: Calcula el cambio en billetas y monedas de un artículo
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 2022-01-31
 
 # ENTRADAS(2): 1. Precio del artículo, 2.Dinero Pagado

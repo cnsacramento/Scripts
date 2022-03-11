@@ -2,7 +2,7 @@
 
 # NOMBRE: ej05-calcula_tiempos.sh
 # OBJETIVO:Convertir segundos a días,horas,minutos,segundo. 
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 26/01/2022
 
 # ENTRADAS(1): 1. Indica el número de segundos

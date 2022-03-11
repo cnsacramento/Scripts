@@ -2,7 +2,7 @@
 
 # NOMBRE: ej03-dia_semana.sh
 # OBJETIVO: Recoge una fecha y devuelve el día de la semana que fue en aquella época
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 25/01/2022
 
 # ENTRADAS(3): 1: Día, 2: mes, 3: año

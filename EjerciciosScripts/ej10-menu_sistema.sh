@@ -2,7 +2,7 @@
 
 # NOMBRE: ej10-menu_sistema.sh
 # OBJETIVO: Implementar un menú con diversas opciones
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 2022/01/24
 
 # ENTRADAS(numDatos): (poner que hace cada dato)

@@ -2,7 +2,7 @@
 
 # NOMBRE: ej09-info_ruta.sh
 # OBJETIVO: Recibe un argumento e indica cierta información
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 2022-02-01
 
 # ENTRADAS(1): 1. Parámetro

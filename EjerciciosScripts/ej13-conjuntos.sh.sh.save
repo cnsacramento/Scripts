@@ -1,0 +1,126 @@
+#!/bin/bash
+
+################################
+#
+# NOMBRE: ej13-conjuntos.sh
+# OBJETIVO:
+# AUTOR: Alejandro y Christian
+# FECHA: 02-03-2022
+#
+#
+# ENTRADAS: 1. NUM_1, 2. Número 2
+# SALIDAS:
+# VERSIONES:
+################################
+
+declare -a NUM_1
+declare -a NUM_2
+declare -a NUM_3
+
+if [ $# -ne 0 ]; then
+	for arg; do
+		A=($arg ${NUM_1[@]})
+	done
+	Amedia=0
+	Amin=${A[0]}
+	Amax=${A[0]}
+	for i in ${A[@]}; do
+		Amedia=$(($Amedia+$i))
+        	if [ $Amin -gt $i ]; then
+                	Amin=$i
+        	fi
+		if [ $Amax -lt $i ]; then
+			Amax=$i
+		fi
+	done
+	Amedia=$(echo "scale=2; $Amedia/${#A[@]}" | bc)
+else
+	echo "No ha introducido ningun parametro para el conjunto A"
+	exit
+fi
+echo
+echo "Conjunto A: ${A[@]}"
+echo "El valor minimo del conjunto A es: $Amin, el valor maximo es: $Amax y el valor medio es de: $Amedia"
+echo
+
+while 
+	read -p "Introduzca un nuevo valor (0 para acabar): " value
+	if [ $value -eq 0 ]; then
+		break
+	fi
+        B=(${B[@]} $value)
+	[ ${B[-1]} -ne 0 ]
+do
+	:
+done
+
+Bmedia=0
+Bmin=${B[0]}
+Bmax=${B[0]}
+for i in "${B[@]}"; do
+	echo $i
+	Bmedia=$(($Bmedia+$i))
+        if [ $Bmin -gt $i ]; then
+                Bmin=$i
+        fi
+        if [ $Bmax -lt $i ]; then
+                Bmax=$i
+        fi
+done
+Bmedia=$(echo "scale=2; $Bmedia/${#B[@]}" | bc)
+echo
+echo "Conjunto B: ${B[@]}"
+echo "El valor minimo del conjunto B es: $Bmin, el valor maximo es: $Bmax y el valor medio es de: $Bmedia"
+echo
+
+read -p "Indica un numero de valores a generar: " numVal
+
+if [ -z $numVal ]; then
+	numVal=30
+fi
+
+for (( i=1; i<=$numVal; i++ )); do
+	parImpar=$(($i%2))
+	mitad=$((${#C[@]}/2))
+	if [ $parImpar -ne 0 ]; then
+		C=(${C[@]::$mitad} $i ${C[@]:$mitad:100000})
+	else
+		C=(${C[@]::$mitad} $RANDOM ${C[@]:$mitad:100000})
+	fi
+done
+
+Cmedia=0
+Cmin=${C[0]}
+Cmax=${C[0]}
+for i in ${C[@]}; do
+	Cmedia=$(($Cmedia+$i))
+        if [ $Cmin -gt $i ]; then
+                Cmin=$i
+        fi
+        if [ $Cmax -lt $i ]; then 
+                Cmax=$i
+        fi
+done
+Cmedia=$(echo "scale=2; $Cmedia/${#C[@]}" | bc)
+echo
+echo "Conjunto C: ${C[@]}"
+echo "El valor minimo del conjunto C es: $Cmin, el valor maximo es: $Cmax y el valor medio es de: $Cmedia"
+
+
+D=(${A[@]} ${B[@]} ${C[@]})
+Dmedia=0
+Dmin=${D[0]}
+Dmax=${D[0]}
+for i in ${D[@]}; do
+	Dmedia=$(($Dmedia+$i))
+        if [ $Dmin -gt $i ]; then
+                Dmin=$i
+        fi
+        if [ $Dmax -lt $i ]; then 
+                Dmax=$i
+        fi
+done
+Dmedia=$(echo "scale=2; $Dmedia/${#D[@]}" | bc)
+echo
+echo "Conjunto D: ${D[@]}"
+echo "El valor minimo del conjunto D es: $Dmin, el valor maximo es: $Dmax y el valor medio es de: $Dmedia"

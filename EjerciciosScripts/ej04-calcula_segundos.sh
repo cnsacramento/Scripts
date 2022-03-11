@@ -2,7 +2,7 @@
 
 # NOMBRE: calcula_segundos.sh
 # OBJETIVO: Se le pasan 4 parámetros (dia,horas,minutos y segundos) y lo convierte todo a segundos
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 31/01/2022
 
 # ENTRADAS(4): 1.Días, 2.Horas, 3.Minutos, 5.Segundos 

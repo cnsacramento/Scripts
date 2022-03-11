@@ -2,7 +2,7 @@
 
 # NOMBRE: crear_usuario
 # OBJETIVO: Simular el dar de alta a un usuario
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 25/01/2022
 
 # ENTRADAS(3): 1: nombre, 2: apellido, 3: usuario

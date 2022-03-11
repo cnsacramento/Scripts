@@ -2,7 +2,7 @@
 
 # NOMBRE: ej07-compara.sh
 # OBJETIVO: Compara con un condicional 2 números
-# AUTOR: Christian Novo Sacramento
+# AUTOR: Alejandro y Christian
 # FECHA: 27/01/2022
 
 # ENTRADAS(2): a: Número1, b: Número2
