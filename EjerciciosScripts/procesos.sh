@@ -20,7 +20,7 @@ ARG=$1
 
 #Comprueba que el argumento no está vacío, no hay más de un argumento
 #Y también controla que el argumento que se introduzca sea CPU/MEM/TIME
-if [[ -z $ARG || $# -gt 1 || $ARG != "CPU" || $ARG != "MEM" || $ARG != "TIME" ]]
+if [[ -z $ARG || $# -gt 1 || $ARG != "CPU" && $ARG != "MEM" && $ARG != "TIME" ]]
 then
 	ARG="CPU"
 fi
@@ -52,7 +52,7 @@ then
         done
 elif [[ $ARG = "TIME" ]] #Muestra el proceso que más tiempo lleva activo
 then
-	#Indica la columna donde se encuntra el TIME en ps aux
+	#Indica la columna donde se encuentra el TIME en ps aux
 	COLUMN=10
 	INFO=(`ps aux | tr -s " " | tail -n +2 | sort -hrk $COLUMN | head -n 1`)
 	echo 'El procesos que más tiempo lleva activo es: ' ${INFO[10]} 'durante' ${INFO[9]} 'minutos'
@@ -77,33 +77,74 @@ do
 	echo "# 4. Detener y pasar el proceso a segundo plano #"
 	echo "# 5. Reanudar el proceso en segundo plano       #"
 	echo "# 6. Pasar el proceso a segundo plano           #"
-	echo "# 7. Asignarle la pero prioridad                #"
+	echo "# 7. Asignarle la peor prioridad                #"
 	echo "# 8. Evitar muerte al cerrar la shell           #"
 	echo "# 9. Salir                                      #"
 	echo "#################################################"
 	read -p "Opción: " OPCION
 	printf "\033c" # Secuencia para limpiar terminal
+	echo -e "\n"
 	case $OPCION in
-		1)
+		1) #Detiene el proceso
+		  kill -STOP ${INFO[1]}
+		  if [[ $? -eq 0 ]]
+		  then
+			echo 'El proceso:' ${INFO[10]} 'se ha detenido'
+		  else
+			echo "Oupss, parece que no se ha podido detener el proceso" ${INFO[10]}
+		  fi
 		  ;;
 		2)
 		  ;;
-		3)
-		  pkill ${INFO[10]}
-		  echo 'El proceso:' ${INFO[10]} 'se ha eliminado correctamente.'
+		3) #Mata el proceso
+		  pkill -SIGKILL ${INFO[10]}
+		  if [[ $? -eq 0 ]]
+		  then
+		    	echo 'El proceso:' ${INFO[10]} 'se ha eliminado correctamente.'
+		  else
+			echo 'Parece que no se puede eliminar el proceso:' ${INFO[10]}
+		  fi
 		  ;;
-		4)
+		4) #Detiene y pone en segundo plano el proceso
+		  kill -STOP ${INFO[1]}
+		  kill -CONT ${INFO[1]}
+		  if [[ $? -eq 0 ]]
+		  then
+			echo 'El proceso:' ${INFO[10]} 'se ha detenido y puesto en segundo plano correctamente.'
+                  else
+                        echo 'Parece que no se puede poner el proceso:' ${INFO[10]} 'en segundo plano'
+		  fi
 		  ;;
 		5)
+		  fg ${INFO[10]}
+		  if [[ $? -eq 0 ]]
+                  then
+                        echo 'El proceso:' ${INFO[10]} 'ya se encuentra en primer plano.'
+                  else
+                        echo 'Parece que el proceso:' ${INFO[10]} 'no se encontraba en segundo plano'
+                  fi
 		  ;;
 		6)
 		  ;;
-		7)
+		7) #Cambia la prioridad del proceso a la peor de todas
+		  renice -n 19 -p ${INFO[1]}
+		  if [[ $? -eq 0 ]]
+                  then
+                        echo 'El proceso:' ${INFO[10]} 'desde ahora tiene la peor prioridad de todas.'
+                  else
+                        echo 'Vaya, parece ser que no se le puede asignar la peor prioridad' ${INFO[10]}
+                  fi
 		  ;;
-		8)
-		  
+		8) #Impide que un proceso muera al cerrar la terminal
+		  nohup ${INFO[10]}
+		  if [[ $? -eq 0 ]]
+                  then
+                        echo 'El proceso:' ${INFO[10]} 'ya no morirá al cerrar la terminal.'
+                  else
+                        echo 'Parece que no se puede prolongar la vida del proceso:' ${INFO[10]}
+                  fi
 		  ;;
-		9)
+		9) #Sale del bucle
 		  CONTINUAR=false
 		  echo "No tengas un buen día, ten un gran día"
 		  ;;
@@ -111,4 +152,5 @@ do
 		  echo "Opción no válida. Prueba de nuevo"
 		  ;;
 	esac
+	echo
 done
