@@ -107,6 +107,7 @@ do
 		  ;;
 		4) #Detiene y pone en segundo plano el proceso
 		  pkill -STOP ${INFO[10]}
+		  bg ${INFO[10]}
 		  pkill -CONT ${INFO[10]}
 		  if [[ $? -eq 0 ]]
 		  then
