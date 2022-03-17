@@ -136,7 +136,7 @@ do
                   fi
 		  ;;
 		8) #Impide que un proceso muera al cerrar la terminal
-		  nohup ${INFO[10]}
+		  disown -h  ${INFO[10]}
 		  if [[ $? -eq 0 ]]
                   then
                         echo -e '\e[34mEl proceso:\e[32m' ${INFO[10]} '\e[34mya no morirá al cerrar la terminal.\e[0m'
