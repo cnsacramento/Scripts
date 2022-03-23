@@ -2,8 +2,8 @@
 
 # NOMBRE: servicio.sh
 # OBJETIVO: Trabajar con los servicios
-# AUTOR: Christian y Oliver
-# FECHA: (poner la fecha de creación del Script)
+# AUTOR: Christian Novo Sacramento y Oliver Pérez Padilla
+# FECHA:
 
 # ENTRADAS(numDatos): (poner que hace cada dato)
 # SALIDAS: (poner acción del Script)

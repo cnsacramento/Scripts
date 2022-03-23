@@ -2,7 +2,7 @@
 
 # NOMBRE: procesos.sh
 # OBJETIVO: Obtener el proceso que más CPU/MEM/TIME contenga y ejercer acciones sobre dicho proceso
-# AUTOR: (poner el creador del Script)
+# AUTOR: Christian Novo Sacramento y Oliver Pérez Padilla
 # FECHA: (poner la fecha de creación del Script)
 
 # ENTRADAS(numDatos): (poner que hace cada dato)
