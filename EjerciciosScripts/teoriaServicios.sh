@@ -18,7 +18,7 @@
 systemctl
 
 # Ver solo servicios
-systemctl list-unit --type=service
+systemctl list-units --type=service
 
 # Formato antiguo que se ve más bonito que el systemctl
 service --status-all
@@ -28,6 +28,8 @@ systemctl status 'nombre del servicio'
 
 # Parar un servicio
 systemctl stop 'nombre servicio'
+
+# Mostrar si un servicio está activo
 systemctl is-active openvpn # Para los scripts, también se puede pedir el error echo $?
 
 # Empezar un servicio
