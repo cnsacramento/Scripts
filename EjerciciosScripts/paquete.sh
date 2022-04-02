@@ -24,7 +24,7 @@ then
     exit $ERROR_ARGS
 fi
 
-dpkg -l $NOMBRE_PAQUETE > /dev/null 2>&1
+dpkg -l $NOMBRE_PAQUETE > /dev/null
 INSTALADO=$?
 if [[ $INSTALADO -eq 0 ]]
 then
